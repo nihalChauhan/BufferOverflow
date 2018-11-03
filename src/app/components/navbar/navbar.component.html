@@ -1,0 +1,29 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="navbar-header d-flex align-items-center justify-content-between">
+        <a [routerLink]="['/']" class="navbar-brand">BufferOverflow</a>
+      </div>
+      <div>
+        <div *ngIf="loggedIn && username">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a (click)="logout()" style="cursor:pointer" class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item"><a [routerLink]="['new']" class="nav-link">Add Question</a>
+          </li>
+          <li class="nav-item"><a [routerLink]="['profile']"  [queryParams]="{username: username}"  class="nav-link">{{username}}</a>
+          </li>
+        </ul>
+      </div>
+        <div *ngIf="!loggedIn">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a [routerLink]="['signup']" class="nav-link">Sign Up</a>
+            </li>
+            <li class="nav-item"><a [routerLink]="['login']" class="nav-link">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

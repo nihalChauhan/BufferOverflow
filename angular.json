@@ -23,6 +23,11 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/vendor/font-awesome/css/font-awesome.min.css",
+              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/css/fontastic.css",
+              "src/assets/css/style.default.css",
+              "src/assets/css/custom.css",
               "src/styles.css"
             ],
             "scripts": []

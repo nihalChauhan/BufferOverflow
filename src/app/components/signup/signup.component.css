@@ -1,0 +1,16 @@
+.field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+}
+
+.title {
+    padding:30px;
+}
+
+.warning {
+    color: red
+}
+
+form {
+    margin-bottom:30px
+}

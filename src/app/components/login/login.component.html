@@ -1,0 +1,72 @@
+<div class="padding">
+    <div class="container">
+      
+      <div class="row">
+          <div class="mx-auto title">
+              <h3 class="mx-auto">Login</h3>
+          </div>
+      </div>
+      
+      <form #loginForm = "ngForm" (ngSubmit) = "login(loginForm.value)" class="form-horizontal">
+          <div class="row" *ngIf = "invalidCredentials">
+              <div class="col-md-3 field-label-responsive"></div>
+              <div class="col-md-6 col-md-offset-3 warning">
+                <p class="warning text-center">Invalid Login Credentials</p>
+              </div>
+            </div>
+              
+          <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                  <label for="name">Email</label>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                          <input (ngModel) = "email" type="email" name="email" id="email" class="form-control" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <em *ngIf = "loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || showValidationMessages)">Required</em>
+                      </span>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-md-3 field-label-responsive">
+                  <label for="name">Password</label>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                          <input (ngModel) = "password" type="password" name="password" id="name" class="form-control" required>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-control-feedback">
+                      <span class="text-danger align-middle">
+                          <em *ngIf = "loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || showValidationMessages)">Required</em>
+                      </span>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-md-3 field-label-responsive">
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                          <input type="submit" name="submit" id="submit" class="form-control" value="Login" [disabled] = "loginForm.invalid">                         
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+    
+      </div>
+  </div>
