@@ -1,12 +1,21 @@
-<section class="featured-posts">
+<section class="featured-posts" style="padding-top:50px">
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        hello apps will come here
-        <!-- <router-outlet></router-outlet> -->
+        <app-search-bar></app-search-bar>
+        
+        <div *ngIf = "questions; else loading" class="list-posts">
+          <div *ngIf = "questions.length > 0; else noQuestions">
+            <app-question-card *ngFor = "let question of questions" [question] = "question"></app-question-card>
+            <app-paginator [pagination]="pagination"></app-paginator>
+          </div>
+          <ng-template #noQuestions><p>No Questions</p></ng-template>
+        </div>
+        <ng-template #loading> <p>Loading Questions</p></ng-template>
+        
       </div>      
       <div class="col-lg-4">
-        <!-- <app-trending-tags></app-trending-tags> -->
+        <app-top-tags></app-top-tags>
       </div>
     </div>
   </div>

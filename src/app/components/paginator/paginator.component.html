@@ -1,0 +1,11 @@
+<div *ngIf="pagination.totalPages !== 1" style="margin-top:20px">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
+          <li class="page-item active"><a  class="page-link" disabled>{{pagination.currentPage}}</a></li>
+          <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
+        </ul>
+    </nav>
+    <p style="margin-top:20px" >Page {{pagination.currentPage}} of {{pagination.totalPages}}</p>
+</div>
+ 

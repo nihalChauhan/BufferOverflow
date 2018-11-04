@@ -1,0 +1,20 @@
+<div class="add-comment" *ngIf="!loggedIn">
+    <p>You need to be logged in to post answers.</p>
+  </div>
+  <div class="add-comment" *ngIf="loggedIn">
+    <header>
+      <h3 class="h6">Leave an answer</h3>
+    </header>
+    <form #answerForm = "ngForm" (ngSubmit) = "postAnswer(answerForm.value)" class="comment-form">
+      <em *ngIf = "answerForm.controls.useranswer?.invalid && (answerForm.controls.usernanswer?.touched || showValidationMessages)">Required</em>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <textarea (ngModel) = "useranswer" name="useranswer" id="useranswer" placeholder="Type your answer" class="form-control"></textarea>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" name="submit" id="submit" class="btn btn-secondary" value="Submit answer" [disabled] = "answerForm.invalid">Submit answer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

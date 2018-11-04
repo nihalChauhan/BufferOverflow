@@ -1,0 +1,49 @@
+<div class="container" *ngIf="question">
+    <div class="row">
+      <main class="post blog-post offset-lg-1 col-lg-10"> 
+        <div class="container">
+          <div class="post-single">
+            <div class="post-details">
+              <h1>{{question?.title}}</h1>
+              <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a class="author d-flex align-items-center flex-wrap"
+                  routerLink='/profile'  [queryParams]="{username: question?.author?.username}" >
+                  <div class="avatar"><img src={{question?.author?.image}} alt="..." class="img-fluid rounded-circle"></div>
+                  <div class="title"><span>{{question?.author?.userName}}</span></div></a>
+                <div class="d-flex align-items-center flex-wrap">       
+                  <div class="date">{{question?.createdAt | date}}</div>
+                </div>
+              </div>
+              <div *ngIf="loggedIn && username==question?.author?.username" class="buttons">
+                <a class="btn btn-outline-warning" routerLink='/edit' [queryParams]="{id: question?.id}">Edit</a>
+                &nbsp;
+                <a class="btn btn-outline-danger" (click)="questionDeleteEvent()">Delete</a>
+              </div>
+              <div class="post-body">
+                {{question?.description}}
+              </div>
+              <div class="row">
+                <div class="col-md-6" *ngFor="let img of question?.images">
+                  <img [src]="img" width="100%"/>
+                </div>
+              </div>
+              <div  class="post-tags" style="margin-bottom: 20px">
+                <app-tag *ngFor="let tag of question?.tags" [tag]="tag"></app-tag>
+              </div>
+  
+              <div class="post-comments">
+                <header>
+                  <h3 class="h6">Answers<span class="no-of-comments">({{answers?.length}})</span></h3>
+                </header>
+                <app-add-answer (update)="answerUpdate($event)" [id]="question?.id"></app-add-answer>
+                <br/>
+                <br/>
+                <app-answer (delete)="answerDelete($event)" *ngFor="let answer of answers" [answer]="answer"></app-answer>                                
+                <button class="btn btn-outline-primary" *ngIf="pagination.currentPage !== pagination.totalPages" (click)="showMore()">Show more</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  

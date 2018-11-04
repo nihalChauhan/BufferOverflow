@@ -1,0 +1,17 @@
+<div *ngIf="question" class="row d-flex align-items-stretch custom">
+  <div class="text col-lg-12">
+    <div class="text-inner d-flex align-items-center">
+      <div class="content">
+        <header class="post-header">
+          <a routerLink='/question' [queryParams]="{id: question.id}"><h2 class="h4">{{question.title}}</h2></a>
+        </header>
+        <p>{{question.description}}</p>
+        <footer class="post-footer d-flex align-items-center">
+          <div class="avatar"><img src={{question?.author?.image}} alt="..." class="img-fluid rounded-circle"></div>
+          <div class="title"><span>{{question?.author?.userName}}</span></div>
+          <!-- <app-fav [fav]="fav"></app-fav> -->
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

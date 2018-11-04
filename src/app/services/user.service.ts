@@ -10,7 +10,24 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
   private loggedIn = new BehaviorSubject<boolean>(false);
   loggedInObservable = this.loggedIn.asObservable();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    const user = localStorage.getItem('user');
+    if (user !== undefined){
+      this.loggedIn.next(true);
+    }
+  }
+
+  isLoggedIn() {
+    return this.loggedIn.value;
+  }
+
+  setHeaders(): HttpHeaders {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = 'Bearer ' + user.token;
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                     .set('Authorization', token);
+    return headers;
+  }
 
   registerUser(username: string, email: string, password: string, name: string, phoneNumber: string) {
     const userObject = Object.assign({}, {

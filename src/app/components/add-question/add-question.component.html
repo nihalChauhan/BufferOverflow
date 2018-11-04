@@ -1,0 +1,94 @@
+<div class="padding">
+  <div class="container">
+    
+    <div class="row">
+        <div class="mx-auto title">
+            <h3 class="mx-auto">Add New Question</h3>
+        </div>
+    </div>
+    
+    <form #questionForm = "ngForm" (ngSubmit) = "postQuestion(questionForm.value)" class="form-horizontal">
+        <div class="row" *ngIf = "errorList?.length > 0">
+            <div class="col-md-2 field-label-responsive"></div>
+            <div class="col-md-8 col-md-offset-3 warning">
+                <ul>
+                    <li *ngFor = "let errorMessage of errorList">{{errorMessage}}</li>
+                </ul>
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="col-md-2 field-label-responsive">
+                <label for="name">Title</label>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input (ngModel) = "title" type="title" name="title" id="title" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <em *ngIf = "questionForm.controls.title?.invalid && (questionForm.controls.title?.touched || showValidationMessages)">Required</em>
+                    </span>
+                </div>
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="col-md-2 field-label-responsive">
+                <label for="name">Description</label>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input (ngModel) = "description" type="description" name="description" id="description" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <em *ngIf = "questionForm.controls.description?.invalid && (questionForm.controls.description?.touched || showValidationMessages)">Required</em>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 field-label-responsive">
+                <label for="name">Tags</label>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input (ngModel) = "tags" type="tags" name="tags" id="tags" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <em *ngIf = "questionForm.controls.password?.invalid && (questionForm.controls.password?.touched || showValidationMessages)">Required</em>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 field-label-responsive">
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input type="submit" name="submit" id="submit" class="form-control" value="Add Article" [disabled] = "questionForm.invalid">                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+  
+    </div>
+</div>

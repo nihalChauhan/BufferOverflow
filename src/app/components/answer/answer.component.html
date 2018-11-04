@@ -1,0 +1,16 @@
+<div class="comment" style="padding:10px">
+    <div class="comment-header d-flex justify-content-between">
+      <div class="user d-flex align-items-center">
+        <div class="image"><img src={{answer?.author?.image}} alt="..." class="img-fluid rounded-circle"></div>
+        <div class="title"><strong>{{answer?.author?.userName}}</strong><span class="date">{{answer?.createdAt | date}}</span></div>
+      </div>
+      <div class="btn-grp" style="float:right">
+        <button *ngIf="canDelete" (click)="delete()" class="btn btn-outline-danger">Delete</button>
+        <button (click)="upVote()" [class]="upClass">{{answer?.upCount}} <i class="fa fa-arrow-up"></i></button>
+        <button (click)="downVote()" [class]="downClass">{{answer?.downCount}} <i class="fa fa-arrow-down"></i></button>
+      </div>
+    </div>
+    <div class="comment-body">
+      <p>{{answer?.content}}</p>
+    </div>
+</div>
